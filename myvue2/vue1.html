@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	.box{width: 200px;height: 200px;position: absolute;left: 50%;background: red;margin-left: -100px;margin-top: 100px;}
+	.fade-enter{
+		width: 100px;
+		height: 100px;
+		left: 30%;
+		opacity: 0;
+		background: green;
+
+	}
+	.fade-enter-active{
+		width:200px;
+		height: 200px;
+		left: 50%;
+		opacity: 1;
+		background: red;
+	}	
+	.fade-leave{
+	width:200px;height: 200px;
+	opacity: 1;
+	background: red;
+	left: 50%;
+	transition:1s ease all;
+}
+	.fade-leave-active{
+	opacity: 0;
+	width: 0;
+	height:0;
+	background: yellow;
+	}
+	.fade-enter-active,.fade-leave-active{
+
+		transition: 1s ease all;
+
+	}
+
+
+</style>
+<body>
+
+	<div class="root">
+		<input type="button" name="" @click='change' value="改变">
+		<transition name='fade'>
+			<div class="box" v-show='show'>
+			</div>
+		</transition>
+
+
+	</div>
+
+<script type="text/javascript">
+		
+	import Vue from "./bower_components/vue";
+
+	new Vue({
+		el:'.root',
+		data:{
+			show:false
+		},
+		methods:{
+
+			change(){
+
+				this.show=!this.show;
+
+
+			}
+		}
+
+
+
+	})
+
+
+
+
+
+</script>
+
+</body>
+</html>

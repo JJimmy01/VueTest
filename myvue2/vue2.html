@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="bower_components/animate.css/animate.css">
+	<script type="text/javascript"src='bower_components/vue/dist/vue.js'></script>
+	<style type="text/css">
+	
+	
+		*{margin:0;padding: 0;}
+		p{width: 100px;height: 30px;background: red;margin:5px auto;}
+
+	</style>
+</head>	
+<body>
+	<div class="root">
+		<input type="text" name="" @input='change' v-model='msg'>
+		<transition-group enter-active-class='flip animated' leave-active-class='hinge animated'>
+			<p v-for='(val,index) in arr2'  :key='index'>{{val}}</p>
+		</transition-group>
+
+	</div>
+
+	<script type="text/javascript">
+	   new Vue({
+			el: ".root",
+			data:{
+				arr:['apple','banana','pear','grape','orange','watermelon'],
+				msg:'',
+				arr2:[]
+			},
+
+			methods:{
+
+				change(){
+						this.arr2=[];
+						if (this.msg=='') {
+
+
+						}else {
+							
+							this.arr.forEach((val,index)=>{
+
+								if (val.indexOf(this.msg)!=-1) {
+
+									this.arr2.push(this.arr[index])
+
+									}
+							})
+
+
+						}
+
+
+
+
+
+				}
+
+
+			}
+			
+		})
+
+
+
+	</script>
+
+
+</body>
+</html>

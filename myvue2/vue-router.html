@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript"src='bower_components/vue/dist/vue.js'></script>
+	<script type="text/javascript" src="bower_components/vue-router/dist/vue-router.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/animate.css/animate.css">
+	<style type="text/css">
+		a{
+			text-decoration-line: none;
+			transition: .5s;
+		}
+		
+		.router-link-exact-active{
+			text-decoration-line: none;
+			font-size: 26px;
+			color: orange;
+		}
+
+
+
+	</style>
+</head>
+<body>
+
+	<div id="box">
+		<router-link to='/jimmy'>jimmy</router-link>
+		<router-link to='/joyce'>joyce</router-link>
+		<transition enter-active-class='animated bounceInLeft' leave-active-class='animated bounceOutRight'>
+			<router-view></router-view>
+		</transition>
+	</div>
+
+
+	<template id="jj_1">
+		<div>
+			<router-link to='/jimmy/xz'>我的星座</router-link>
+			<router-link to='/jimmy/ah'>我的爱好</router-link>
+			<transition enter-active-class='animated bounceInLeft' leave-active-class='animated bounceOutRight'>
+				<router-view></router-view>
+			</transition>
+		</div>
+	</template>
+	<template id="jjj_1">
+		<div>
+			我是白羊座
+		</div>
+	</template>
+	<template id="jjj_2">
+		<div>
+			我喜欢健身
+		</div>
+	</template>
+
+	<template id="jo_1">
+		<div>
+			<router-link to='/joyce/xz'>我的星座</router-link>
+			<router-link to='/joyce/ah'>我的爱好</router-link>
+			<transition enter-active-class='animated bounceInLeft' leave-active-class='animated bounceOutRight'>
+				<router-view></router-view>
+			</transition>
+		</div>
+	</template>
+	<template id="jjo_1">
+		<div>
+			我是白羊座
+		</div>
+	</template>
+	<template id="jjo_2">
+		<div>
+			我喜欢游泳
+		</div>
+	</template>
+
+
+
+
+
+
+	<script type="text/javascript">
+		var routes = [
+		{
+			path:'/jimmy',
+			component:{
+				template:'#jj_1'
+			},
+			children:[
+
+			{
+				path:'/jimmy/xz',
+				component:{
+					template:'#jjj_1'
+				}
+			},
+			{
+				path:'/jimmy/ah',
+				component:{
+					template:'#jjj_2'
+				}
+			}
+			]
+		},
+
+
+
+		{
+			path:'/joyce',
+			component:{
+				template:'#jo_1'
+			},
+			children:[
+
+			{
+				path:'/joyce/xz',
+				component:{
+					template:'#jjo_1'
+				}
+			},
+			{
+				path:'/joyce/ah',
+				component:{
+					template:'#jjo_2'
+				}
+			}
+			]
+		}
+		];
+
+		var router = new VueRouter({
+
+			routes
+		});
+
+		new Vue({
+			router,
+			el:'#box'
+
+
+		})
+
+
+
+
+	</script>
+</body>
+</html>
